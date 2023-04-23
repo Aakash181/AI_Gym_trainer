@@ -32,7 +32,7 @@ To count the number of correct pushups in an image or video stream, run the foll
 
 ![Example Image](pushup_output.png "This is an example image.")
 
-# wrong output
+# wrong not count
 ![Example Image](incorrect_output.png "This is an example image.")
 ## Checking Sitting Position
 To check if you are sitting properly in an image or video stream, run the following command:
