@@ -25,6 +25,12 @@ To check if you are sitting properly in an image or video stream, run the follow
 
 ``` python sitting_position.py ```
 
+# correct output
+
+![Example Image](good_sitting_position.png "This is an example image.")
+
+# wrong output
+![Example Image](bad_sitting_position.png "This is an example image.")
 
 ## Counting Correct Bench Presses
 To count the number of correct bench presses in an image or video stream, run the following command:
