@@ -7,6 +7,7 @@ To run this project, you need to have the following software installed:
 - Python 3.x
 - OpenCV library (version 4.5.4 or later)
 - Numpy library (version 1.19.5 or later)
+- Mediapipe
 
 # Usage
 ## Counting Correct Pushups
