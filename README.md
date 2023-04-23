@@ -15,28 +15,19 @@ To count the number of correct pushups in an image or video stream, run the foll
 ``` python push_up.py ```
 # output
 
-![Example Image](push_up_output.png "This is an example image."){: width="50%" }
-To count pushups in a video stream from your webcam, run the following command:
-
-``` python push_up.py ```
+![Example Image](push_up_output.png "This is an example image.")
 
 ## Checking Sitting Position
 To check if you are sitting properly in an image or video stream, run the following command:
 
 ``` python sitting_position.py ```
 
-## To check your sitting position in a video stream from your webcam, run the following command:
-
-``` python sitting_position.py ```
 
 ## Counting Correct Bench Presses
 To count the number of correct bench presses in an image or video stream, run the following command:
 
 ``` python bench_press.py ```
 
-## To count bench presses in a video stream from your webcam, run the following command:
-
-``` python bench_press.py ```
 
 The pose detector will generate keypoint locations on the human body and then calculate the angles and lengths for different exercises based on the relative positions of these keypoints.
 
