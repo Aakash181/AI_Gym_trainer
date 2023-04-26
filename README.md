@@ -14,7 +14,7 @@ The Fitness Pose Detector is a prime example of how computer vision technology c
 In addition to the pose detection model, we are also running a parallel neural network model to detect gym equipment in the scene. This model can identify objects like dumbbell rods, weight plates, and other gym equipment, and can provide additional information about the exercise being performed. By combining these two models, we can provide a comprehensive analysis of a person's workout routine, including their posture, form, and equipment usage. This can be incredibly useful for gym-goers, personal trainers, and anyone looking to improve their fitness and technique.
 
 ## Flowchart
-
+![Example Image](workflow.png "This is an example image.")
 ## Requirements
 To run this project, you need to have the following software installed:
 
