@@ -51,11 +51,13 @@ To count the number of correct bench presses in an image or video stream, run th
 
 ``` python bench_press.py ```
 
+## Counting Correct dumbbell bicep curls
+To count the number of dumbbell bicep curls in an image or video stream, run the following command:
+
+``` curl.py ```
 
 The pose detector will generate keypoint locations on the human body and then calculate the angles and lengths for different exercises based on the relative positions of these keypoints.
 
-# Output
-The pose detector will output the number of correct pushups or bench presses, or a message indicating whether you are sitting properly or not.
 
 # Contributing
 Contributions are welcome! If you find any bugs or have any suggestions for improving this project, please open an issue or pull request on the GitHub repository.
