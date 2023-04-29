@@ -30,10 +30,10 @@ To count the number of correct pushups in an image or video stream, run the foll
 ``` python push_up.py ```
 ### correct output
 
-![Example Image](pushup_output.png "This is an example image.")
+![Example Image](./output/pushup_output.png "This is an example image.")
 
 ### wrong not count
-![Example Image](incorrect_output.png "This is an example image.")
+![Example Image](./output/incorrect_output.png "This is an example image.")
 ## Checking Sitting Position
 To check if you are sitting properly in an image or video stream, run the following command:
 
@@ -41,10 +41,10 @@ To check if you are sitting properly in an image or video stream, run the follow
 
 ### correct output
 
-![Example Image](good_sitting_position.png "This is an example image.")
+![Example Image](./output/good_sitting_position.png "This is an example image.")
 
 ### wrong output
-![Example Image](bad_sitting_position.png "This is an example image.")
+![Example Image](./output/bad_sitting_position.png "This is an example image.")
 
 ## Counting Correct Bench Presses
 To count the number of correct bench presses in an image or video stream, run the following command:
