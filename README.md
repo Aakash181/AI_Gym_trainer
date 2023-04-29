@@ -28,22 +28,22 @@ To run this project, you need to have the following software installed:
 To count the number of correct pushups in an image or video stream, run the following command:
 
 ``` python push_up.py ```
-# correct output
+### correct output
 
 ![Example Image](pushup_output.png "This is an example image.")
 
-# wrong not count
+### wrong not count
 ![Example Image](incorrect_output.png "This is an example image.")
 ## Checking Sitting Position
 To check if you are sitting properly in an image or video stream, run the following command:
 
 ``` python sitting_position.py ```
 
-# correct output
+### correct output
 
 ![Example Image](good_sitting_position.png "This is an example image.")
 
-# wrong output
+### wrong output
 ![Example Image](bad_sitting_position.png "This is an example image.")
 
 ## Counting Correct Bench Presses
