@@ -78,6 +78,7 @@ To count the number of Side lateral raise in an image or video stream, run the f
 ### output
 
 ![Example Image](./output/Side_lateral.gif "This is an example image.")
+
 The pose detector will generate keypoint locations on the human body and then calculate the angles and lengths for different exercises based on the relative positions of these keypoints.
 
 
