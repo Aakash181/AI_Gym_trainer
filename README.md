@@ -54,8 +54,10 @@ To count the number of correct bench presses in an image or video stream, run th
 ## Counting Correct dumbbell bicep curls
 To count the number of dumbbell bicep curls in an image or video stream, run the following command:
 
-``` curl.py ```
+``` python curl.py ```
+### output
 
+![Example Image](./output/curl.gif "This is an example image.")
 ## Counting Correct Side lateral raise
 To count the number of Side lateral raise in an image or video stream, run the following command:
 
