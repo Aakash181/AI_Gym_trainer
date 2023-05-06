@@ -7,6 +7,11 @@ from random import random
 
 angles=np.zeros((500,))
 angle=0
+font = cv2.FONT_HERSHEY_SIMPLEX
+font_scale = 0.5
+font_color = (255, 255, 255)
+x_axis_label = 'Time'
+y_axis_label = 'Angle '
 
 
 # ******************** curl ************************
@@ -97,8 +102,9 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
 
             # print(y1)
             cv2.line(image, (x1, y1), (x2, y2), (0, 0, 255), 2)
-
-        
+            
+        cv2.putText(image, x_axis_label, (30 + 500 // 2 - 30, 50 + 400 + 30), font, font_scale, font_color, 1, cv2.LINE_AA)
+        cv2.putText(image, y_axis_label, (59 - 40, 50 + 300 // 2), font, font_scale, font_color, 1, cv2.LINE_AA)
         # Render curl counter
         # Setup status box
         cv2.rectangle(image, (0,0), (225,73), (245,117,16), -1)
