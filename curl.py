@@ -1,9 +1,29 @@
 import cv2
-import mediapipe as mp
+import math
+import time
 import numpy as np
+import mediapipe as mp
+from random import random
+
+angles=np.zeros((500,))
+angle=0
+font = cv2.FONT_HERSHEY_SIMPLEX
+font_scale = 0.5
+font_color = (255, 255, 255)
+x_axis_label = 'Time'
+y_axis_label = 'Angle '
+
+
+# ******************** curl ************************
+
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 cap = cv2.VideoCapture(0)
+
+# global variable angle
+angle=0
+index=0
+
 
 def calculate_angle(a,b,c):
     a = np.array(a) # First
@@ -20,6 +40,7 @@ def calculate_angle(a,b,c):
 # Curl counter variables
 counter = 0 
 stage = None
+
 
 ## Setup mediapipe instance
 with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
@@ -61,11 +82,29 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
             if angle < 30 and stage =='down':
                 stage="up"
                 counter +=1
-                print(counter)
+                # print(counter)
                        
         except:
             pass
-        
+
+
+        #Statistics 
+        angles[index]=angle
+
+        cv2.line(image, (50, 450), (450, 450), (255, 255, 255), 2) #horizontal
+        cv2.line(image, (50, 450), (50, 50), (255, 255, 255), 2)   #vertical
+
+        for i in range(1, index + 1):
+            x1 = 50 + (i - 1) * 400 // 500
+            y1 = 450 - int(angles[i - 1] * 4.0 / 1000.0 * 400)
+            x2 = 50 + i * 400 // 500
+            y2 = 450 - int(angles[i] * 4.0 / 1000.0 * 400)
+
+            # print(y1)
+            cv2.line(image, (x1, y1), (x2, y2), (0, 0, 255), 2)
+            
+        cv2.putText(image, x_axis_label, (30 + 500 // 2 - 30, 50 + 400 + 30), font, font_scale, font_color, 1, cv2.LINE_AA)
+        cv2.putText(image, y_axis_label, (59 - 40, 50 + 300 // 2), font, font_scale, font_color, 1, cv2.LINE_AA)
         # Render curl counter
         # Setup status box
         cv2.rectangle(image, (0,0), (225,73), (245,117,16), -1)
@@ -92,9 +131,13 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                                  )               
         
         cv2.imshow('Mediapipe Feed', image)
+        index = (index + 1) % 500
+        time.sleep(0.001)
 
         if cv2.waitKey(10) & 0xFF == ord('q'):
             break
+
+    
 
     cap.release()
     cv2.destroyAllWindows()
