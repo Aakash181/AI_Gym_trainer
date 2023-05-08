@@ -5,14 +5,14 @@ import numpy as np
 import mediapipe as mp
 from random import random
 
-angles=np.zeros((500,))
-angle=0
 font = cv2.FONT_HERSHEY_SIMPLEX
 font_scale = 0.5
 font_color = (255, 255, 255)
 x_axis_label = 'Time'
 y_axis_label = 'Angle '
 
+sets=input("Enter number of sets ")
+# weight=input("Enter weight of dumbell/barbell ")
 
 # ******************** curl ************************
 
@@ -20,9 +20,17 @@ mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 cap = cv2.VideoCapture(0)
 
-# global variable angle
+# global variables
+angles=np.zeros((500,))
 angle=0
 index=0
+counter=0
+reps=0
+start_time =0
+countdown = 15
+br=False
+br_check=False
+
 
 
 def calculate_angle(a,b,c):
@@ -38,7 +46,6 @@ def calculate_angle(a,b,c):
         
     return angle 
 # Curl counter variables
-counter = 0 
 stage = None
 
 
@@ -88,7 +95,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
             pass
 
 
-        #Statistics 
+        #******************* Statistics *****************
         angles[index]=angle
 
         cv2.line(image, (50, 450), (450, 450), (255, 255, 255), 2) #horizontal
@@ -102,18 +109,79 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
 
             # print(y1)
             cv2.line(image, (x1, y1), (x2, y2), (0, 0, 255), 2)
+
+            
             
         cv2.putText(image, x_axis_label, (30 + 500 // 2 - 30, 50 + 400 + 30), font, font_scale, font_color, 1, cv2.LINE_AA)
         cv2.putText(image, y_axis_label, (59 - 40, 50 + 300 // 2), font, font_scale, font_color, 1, cv2.LINE_AA)
         # Render curl counter
         # Setup status box
         cv2.rectangle(image, (0,0), (225,73), (245,117,16), -1)
-        
+        cv2.rectangle(image, (1120,0), (1300,73), (245,117,16), -1)
+
+        #******************* programming logic for counting break and reps *****************
+        av=0
+        for i in range(0,20):
+            av+=angles[index-i]
+        av/=20.0
+
+        if(av>=165 and av<=180 and counter>0):
+            br=True
+
+        # Counting break 
+        if br and start_time==0:
+            start_time=time.time()
+            reps=counter
+
+            countdown=15
+            sets=str(int(sets)-1)
+            counter=0
+
+        if(br):
+            # print("Hello")
+            elapsed_time = time.time() - start_time
+            remaining_time = max(countdown - elapsed_time, 0)
+            remaining_seconds = int(remaining_time)
+
+            if elapsed_time<3:
+                pqr=""
+                if(reps>12):
+                    pqr=str(reps) + " reps, Well Done! Weight Badhale 2.5 se"
+                    
+                elif(reps<8):
+                    pqr=str(reps) + " reps, Tumse na ho payega, Weight kam kar 2.5 se"
+
+                else:
+                    pqr=str(reps) + " reps, Badhiya jaa raha hai Guru"
+
+                cv2.putText(image, pqr , (200,200), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,139), 3, cv2.LINE_AA)                
+
+            else:
+                countdown_str = f"Counting Break.. {remaining_seconds} seconds"
+                cv2.putText(image, countdown_str, (200,200), cv2.FONT_HERSHEY_SIMPLEX, 2, (0,0,139), 3, cv2.LINE_AA)
+
+
+            if int(sets)==0:
+                break;
+
+        if counter>0:
+            br=False
+            start_time=0
+
+        # *******************                    DONE                             *****************
+
         # Rep data
         cv2.putText(image, 'REPS', (15,12), 
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,0), 1, cv2.LINE_AA)
         cv2.putText(image, str(counter), 
                     (10,60), 
+                    cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
+        
+        # Sets data
+        cv2.putText(image, 'SETS REMAINING', (1130,12), 
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0,0,0), 1, cv2.LINE_AA)
+        cv2.putText(image, str(sets), 
+                    (1170,60), 
                     cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
         
         # Stage data
