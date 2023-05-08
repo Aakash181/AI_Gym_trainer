@@ -123,7 +123,7 @@ while cap.isOpened():
 
     #******************* programming logic for counting break and reps *****************
     av=0
-    for i in range(0,20):
+    for i in range(0,80):
         av+=angles[index-i]
     av/=20.0
 
@@ -146,10 +146,10 @@ while cap.isOpened():
 
         if elapsed_time<3:
             pqr=""
-            if(reps>12):
+            if(reps>7):
                 pqr=str(reps) + " reps, Well Done! Increase your weight by 2.5"
                     
-            elif(reps<8):
+            elif(reps<5):
                 pqr=str(reps) + " reps, Lighten up your equipment weight by 2.5"
 
             else:
