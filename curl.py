@@ -98,22 +98,23 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
         #******************* Statistics *****************
         angles[index]=angle
 
-        cv2.line(image, (50, 450), (450, 450), (255, 255, 255), 2) #horizontal
-        cv2.line(image, (50, 450), (50, 50), (255, 255, 255), 2)   #vertical
+        cv2.line(image, (50, 650), (650, 650), (255, 255, 255), 2) #horizontal
+        cv2.line(image, (50, 650), (50, 250), (255, 255, 255), 2)   #vertical
 
         for i in range(1, index + 1):
-            x1 = 50 + (i - 1) * 400 // 500
-            y1 = 450 - int(angles[i - 1] * 4.0 / 1000.0 * 400)
-            x2 = 50 + i * 400 // 500
-            y2 = 450 - int(angles[i] * 4.0 / 1000.0 * 400)
+            x1 = 50 + (i - 1) * 400 // 300
+            y1 = 650 - int(angles[i - 1] * 4.0 / 1000.0 * 300)
+
+            x2 = 50 + i * 400 // 300
+            y2 = 650 - int(angles[i] * 4.0 / 1000.0 * 300)
 
             # print(y1)
             cv2.line(image, (x1, y1), (x2, y2), (0, 0, 255), 2)
 
             
             
-        cv2.putText(image, x_axis_label, (30 + 500 // 2 - 30, 50 + 400 + 30), font, font_scale, font_color, 1, cv2.LINE_AA)
-        cv2.putText(image, y_axis_label, (59 - 40, 50 + 300 // 2), font, font_scale, font_color, 1, cv2.LINE_AA)
+        cv2.putText(image, x_axis_label, (30 + 500 // 2 - 30, 50 + 600 + 30), font, font_scale, font_color, 1, cv2.LINE_AA)
+        cv2.putText(image, y_axis_label, (59 - 40, 50 + 600 // 2), font, font_scale, font_color, 1, cv2.LINE_AA)
         # Render curl counter
         # Setup status box
         cv2.rectangle(image, (0,0), (225,73), (245,117,16), -1)
@@ -146,10 +147,10 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
             if elapsed_time<3:
                 pqr=""
                 if(reps>12):
-                    pqr=str(reps) + " reps, Well Done! Weight Badhale 2.5 se"
+                    pqr=str(reps) + " reps, Well Done! Increase your weight by 2.5"
                     
                 elif(reps<8):
-                    pqr=str(reps) + " reps, Tumse na ho payega, Weight kam kar 2.5 se"
+                    pqr=str(reps) + " reps, Lighten up your equipment weight by 2.5"
 
                 else:
                     pqr=str(reps) + " reps, Badhiya jaa raha hai Guru"
@@ -199,7 +200,7 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
                                  )               
         
         cv2.imshow('Mediapipe Feed', image)
-        index = (index + 1) % 500
+        index = (index + 1) % 300
         time.sleep(0.001)
 
         if cv2.waitKey(10) & 0xFF == ord('q'):
