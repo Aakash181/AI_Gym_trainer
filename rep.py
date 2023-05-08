@@ -100,23 +100,23 @@ while cap.isOpened():
     # cv2.putText(image, str(counter), (100,150),cv2.FONT_HERSHEY_PLAIN, 12, (255,0,0),12) #Old already existed
     
     #******************* Statistics *****************
-    print(angle)
+    # print(angle)
     angles[index]=angle
 
-    cv2.line(image, (50, 450), (450, 450), (255, 255, 255), 2) #horizontal
-    cv2.line(image, (50, 450), (50, 50), (255, 255, 255), 2)   #vertical
+    cv2.line(image, (50, 650), (650, 650), (255, 255, 255), 2) #horizontal
+    cv2.line(image, (50, 650), (50, 250), (255, 255, 255), 2)   #vertical
 
     for i in range(1, index + 1):
-        x1 = 50 + (i - 1) * 400 // 500
-        y1 = 450 - int(angles[i - 1] * 4.0 / 1000.0 * 400)
-        x2 = 50 + i * 400 // 500
-        y2 = 450 - int(angles[i] * 4.0 / 1000.0 * 400)
+        x1 = 50 + (i - 1) * 400 // 300
+        y1 = 650 - int(angles[i - 1] * 4.0 / 1000.0 * 400)
+        x2 = 50 + i * 400 // 300
+        y2 = 650 - int(angles[i] * 4.0 / 1000.0 * 400)
 
         # print(y1)
         cv2.line(image, (x1, y1), (x2, y2), (0, 0, 255), 2)
 
-    cv2.putText(image, x_axis_label, (30 + 500 // 2 - 30, 50 + 400 + 30), font, font_scale, (0,0,0), 2, cv2.LINE_AA)
-    cv2.putText(image, y_axis_label, (45 - 40, 50 + 300 // 2), font, font_scale, (0,0,0), 2, cv2.LINE_AA)
+    cv2.putText(image, x_axis_label, (30 + 500 // 2 - 30, 50 + 600 + 30), font, font_scale, (0,0,0), 2, cv2.LINE_AA)
+    cv2.putText(image, y_axis_label, (45 - 40, 50 + 600 // 2), font, font_scale, (0,0,0), 2, cv2.LINE_AA)
 
     cv2.rectangle(image, (0,0), (100,73), (245,117,16), -1)
     cv2.rectangle(image, (1120,0), (1300,73), (245,117,16), -1)
@@ -147,10 +147,10 @@ while cap.isOpened():
         if elapsed_time<3:
             pqr=""
             if(reps>12):
-                pqr=str(reps) + " reps, Well Done! Weight Badhale 2.5 se"
+                pqr=str(reps) + " reps, Well Done! Increase your weight by 2.5"
                     
             elif(reps<8):
-                pqr=str(reps) + " reps, Tumse na ho payega, Weight kam kar 2.5 se"
+                pqr=str(reps) + " reps, Lighten up your equipment weight by 2.5"
 
             else:
                 pqr=str(reps) + " reps, Badhiya jaa raha hai Guru"
@@ -185,7 +185,7 @@ while cap.isOpened():
                 cv2.FONT_HERSHEY_SIMPLEX, 2, (255,255,255), 2, cv2.LINE_AA)
 
     cv2.imshow('Mediapipe Feed', image)
-    index = (index + 1) % 500
+    index = (index + 1) % 300
     time.sleep(0.001)
     if cv2.waitKey(10) & 0xFF == ord('q'):
         break
