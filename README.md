@@ -69,7 +69,7 @@ To count the number of dumbbell bicep curls in an image or video stream, run the
 ``` python curl.py ```
 ### output
 
-![Example Image](./output/curl.gif "This is an example image.")
+![Example Image](./output/curl_updated.gif "This is an example image.")
 ## Counting Correct Side lateral raise
 To count the number of Side lateral raise in an image or video stream, run the following command:
 
@@ -77,7 +77,7 @@ To count the number of Side lateral raise in an image or video stream, run the f
 
 ### output
 
-![Example Image](./output/Side_lateral.gif "This is an example image.")
+![Example Image](./output/rep.gif "This is an example image.")
 
 The pose detector will generate keypoint locations on the human body and then calculate the angles and lengths for different exercises based on the relative positions of these keypoints.
 
