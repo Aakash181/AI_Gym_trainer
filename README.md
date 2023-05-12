@@ -36,7 +36,7 @@ To count the number of correct pushups in an image or video stream, run the foll
      <td>incorrect</td>
   </tr>
   <tr>
-    <td><img src="./output/pushup_output.png"></td>
+    <td><img src="./output/push_up.png"></td>
     <td><img src="./output/incorrect_output.png"></td>
   </tr>
  </table>
@@ -54,8 +54,8 @@ To check if you are sitting properly in an image or video stream, run the follow
      <td>incorrect</td>
   </tr>
   <tr>
-    <td><img src="./output/good_sitting_position.png "></td>
-    <td><img src="./output/bad_sitting_position.png "></td>
+    <td><img src="./output/correct_posture.png "></td>
+    <td><img src="./output/incorrect_posture.png "></td>
   </tr>
  </table>
 ## Counting Correct Bench Presses
