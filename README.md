@@ -36,7 +36,7 @@ To count the number of correct pushups in an image or video stream, run the foll
      <td>incorrect</td>
   </tr>
   <tr>
-    <td><img src="./output/pushup_output.png"></td>
+    <td><img src="./output/push_up.png"></td>
     <td><img src="./output/incorrect_output.png"></td>
   </tr>
  </table>
@@ -54,8 +54,8 @@ To check if you are sitting properly in an image or video stream, run the follow
      <td>incorrect</td>
   </tr>
   <tr>
-    <td><img src="./output/good_sitting_position.png "></td>
-    <td><img src="./output/bad_sitting_position.png "></td>
+    <td><img src="./output/correct_posture.png "></td>
+    <td><img src="./output/incorrect_posture.png "></td>
   </tr>
  </table>
 ## Counting Correct Bench Presses
@@ -69,7 +69,7 @@ To count the number of dumbbell bicep curls in an image or video stream, run the
 ``` python curl.py ```
 ### output
 
-![Example Image](./output/curl.gif "This is an example image.")
+![Example Image](./output/curl_updated.gif "This is an example image.")
 ## Counting Correct Side lateral raise
 To count the number of Side lateral raise in an image or video stream, run the following command:
 
@@ -77,7 +77,7 @@ To count the number of Side lateral raise in an image or video stream, run the f
 
 ### output
 
-![Example Image](./output/Side_lateral.gif "This is an example image.")
+![Example Image](./output/rep.gif "This is an example image.")
 
 The pose detector will generate keypoint locations on the human body and then calculate the angles and lengths for different exercises based on the relative positions of these keypoints.
 
